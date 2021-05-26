@@ -1,0 +1,40 @@
+import com.ds.ciceksepeti.buildsrc.Deps
+import com.ds.ciceksepeti.buildsrc.Modules
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id "org.jetbrains.kotlin.kapt"
+}
+
+apply from: "$rootDir/commonLibs.gradle"
+
+dependencies {
+
+    implementation project(Modules.model)
+    implementation(Deps.stdlib)
+    implementation(Deps.coreKtx)
+    implementation(Deps.appcompat)
+    implementation(Deps.material)
+    implementation(Deps.constraintLayout)
+
+    // koin for di
+    implementation(Deps.koinAndroid)
+    // coroutines
+    implementation(Deps.coroutinesAndroid)
+    implementation(Deps.coroutinesCore)
+
+    // room
+    implementation(Deps.roomKtx)
+    kapt(Deps.roomCompiler)
+
+    // test
+    testImplementation(Deps.junit)
+    testImplementation(Deps.koinTest)
+    testImplementation(Deps.coroutineTest)
+    testImplementation(Deps.roboelectric)
+    androidTestImplementation(Deps.junitExt)
+    androidTestImplementation(Deps.espressoCore)
+
+}

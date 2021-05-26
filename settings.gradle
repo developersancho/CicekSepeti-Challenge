@@ -1,0 +1,8 @@
+rootProject.name = "CicekSepeti-Challenge"
+include ':app'
+include ':common'
+include ':domain'
+include ':data:model'
+include ':data:local'
+include ':data:remote'
+include ':data:repository'

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="common_general_close">Kapat</string>
+    <string name="common_check_internet_dialog_message">İnternetinizi Açıp Tekrar Deneyiniz!</string>
+
+</resources>
