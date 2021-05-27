@@ -33,5 +33,5 @@ data class DynamicFilter(
     @Json(name = "urlTag")
     var urlTag: Any?,
     @Json(name = "values")
-    var values: List<Value>?
+    var values: List<Value> = emptyList()
 )

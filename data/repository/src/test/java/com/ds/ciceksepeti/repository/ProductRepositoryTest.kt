@@ -19,7 +19,10 @@ class ProductRepositoryTest : BaseRepositoryTest() {
 
     @Test
     fun getProducts() = runBlocking {
-        repo.getProducts().collect { state ->
+        val detailList = listOf(2007217)
+        val checkList = listOf(2007124)
+        val priceList = listOf(1, 2, 3)
+        repo.getProducts(detailList, checkList, priceList).collect { state ->
             when (state) {
                 is DataState.Error -> {
                     println(state.error.message)

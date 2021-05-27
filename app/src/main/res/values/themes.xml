@@ -25,4 +25,16 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
     </style>
 
+    <style name="FullScreenDialog" parent="Theme.CicekSepetiChallenge">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowAnimationStyle">@style/FullScreenDialogFragmentAnimation</item>
+    </style>
+
+    <style name="FullScreenDialogFragmentAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/down_to_up_in</item>
+        <item name="android:windowExitAnimation">@anim/up_to_down_exit</item>
+    </style>
+
 </resources>

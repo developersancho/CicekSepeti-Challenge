@@ -1,6 +1,7 @@
 package com.ds.ciceksepeti.common.base
 
 import androidx.viewbinding.ViewBinding
+import com.ds.ciceksepeti.common.extension.toast
 import com.ds.ciceksepeti.common.viewmodel.VMActivity
 import com.ds.ciceksepeti.common.widget.LoadingDialog
 
@@ -19,6 +20,11 @@ abstract class BaseViewModelActivity<VB : ViewBinding, VM : BaseViewModel<*>> : 
     override fun hideLoading() {
         super.hideLoading()
         loadingDialog?.dismiss()
+    }
+
+    override fun showErrorMessage(message: String) {
+        super.showErrorMessage(message)
+        toast(message)
     }
 
 }

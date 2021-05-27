@@ -12,16 +12,12 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
 
     var onItemClicked: ((Product) -> Unit)? = null
 
-    private var items = arrayListOf<Product>()
+    var items: List<Product> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
-    fun addData(list: List<Product>) {
-        items.addAll(list)
-        notifyDataSetChanged()
-    }
-
-    fun clearData() {
-        items.clear()
-    }
 
     inner class ProductViewHolder(private val binding: RowItemProductBinding) :
         RecyclerView.ViewHolder(binding.root) {

@@ -7,9 +7,15 @@ import com.ds.ciceksepeti.repository.ProductRepository
 import kotlinx.coroutines.flow.Flow
 
 class GetProducts(private val repository: ProductRepository) :
-    FlowDataStateUseCase<Unit, ProductResponse>() {
+    FlowDataStateUseCase<GetProducts.Param, ProductResponse>() {
 
-    override fun execute(params: Unit): Flow<DataState<ProductResponse>> {
-        return repository.getProducts()
+    data class Param(
+        var detailList: List<Int> = listOf(),
+        var checkList: List<Int> = listOf(),
+        var priceList: List<Int> = listOf()
+    )
+
+    override fun execute(params: Param): Flow<DataState<ProductResponse>> {
+        return repository.getProducts(params.detailList, params.checkList, params.priceList)
     }
 }

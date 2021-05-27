@@ -3,4 +3,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="general_product_upper">Ürünler</string>
+    <string name="general_filter">Filtrele</string>
+    <string name="general_clear">Temizle</string>
+    <string name="text_show_result">Sonuçları Göster</string>
+    <string name="general_ok">Tamam</string>
+    <string name="general_product_not_found">Ürünler Bulunamadı...</string>
 </resources>

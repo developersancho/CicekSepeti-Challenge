@@ -18,7 +18,22 @@ class ProductServiceTest : BaseServiceTest() {
 
     @Test
     fun getProducts() = runBlocking {
-        val response = service.getProducts()
+        val detailList = listOf(2007217)
+        val checkList = listOf(2007124)
+        val priceList = listOf(1, 2, 3)
+        val response = service.getProducts(detailList, checkList, priceList)
+        println(response.result?.data?.products?.firstOrNull()?.name)
+        println(response.result?.data?.products?.firstOrNull()?.installmentText)
+        Assert.assertEquals(2787616, response.result?.data?.products?.firstOrNull()?.id)
+    }
+
+
+    @Test
+    fun getProductsNoFilters() = runBlocking {
+        val detailList = listOf<Int>()
+        val checkList = listOf<Int>()
+        val priceList = listOf<Int>()
+        val response = service.getProducts(detailList, checkList, priceList)
         println(response.result?.data?.products?.firstOrNull()?.name)
         println(response.result?.data?.products?.firstOrNull()?.installmentText)
         Assert.assertEquals(2787616, response.result?.data?.products?.firstOrNull()?.id)

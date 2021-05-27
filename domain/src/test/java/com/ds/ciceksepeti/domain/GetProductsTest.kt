@@ -19,7 +19,11 @@ class GetProductsTest : BaseDomainTest() {
 
     @Test
     fun getProducts() = runBlocking {
-        getProducts.invoke(Unit).collect { state ->
+        val detailList = listOf(2007217)
+        val checkList = listOf(2007124)
+        val priceList = listOf(1, 2, 3)
+        val params = GetProducts.Param(detailList, checkList, priceList)
+        getProducts.invoke(params).collect { state ->
             when (state) {
                 is DataState.Error -> {
                     println(state.error.message)

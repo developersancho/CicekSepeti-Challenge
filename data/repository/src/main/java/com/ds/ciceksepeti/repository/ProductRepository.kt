@@ -8,7 +8,13 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class ProductRepository(private val service: ProductService) : BaseRepository() {
-    fun getProducts(): Flow<DataState<ProductResponse>> = flow {
-        emit(apiCall { service.getProducts() })
+
+    fun getProducts(
+        detailList: List<Int>,
+        checkList: List<Int>,
+        priceList: List<Int>
+    ): Flow<DataState<ProductResponse>> = flow {
+        emit(apiCall { service.getProducts(detailList, checkList, priceList) })
     }
+
 }

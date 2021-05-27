@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ds.ciceksepeti.challenge.databinding.FragmentProductBinding
 import com.ds.ciceksepeti.challenge.feature.filter.FilterViewModel
 import com.ds.ciceksepeti.common.base.BaseViewModelFragment
+import com.ds.ciceksepeti.common.extension.gone
 import com.ds.ciceksepeti.common.extension.observeState
+import com.ds.ciceksepeti.common.extension.visible
+import com.ds.ciceksepeti.model.mapping.toFilterCategoryList
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,6 +28,7 @@ class ProductFragment : BaseViewModelFragment<FragmentProductBinding, ProductVie
     override fun onViewReady(bundle: Bundle?) {
         super.onViewReady(bundle)
         initAdapter()
+        viewModel.getProductList(filterViewModel.selectedFilters)
     }
 
     private fun initAdapter() {
@@ -46,11 +50,18 @@ class ProductFragment : BaseViewModelFragment<FragmentProductBinding, ProductVie
         super.onObserveState()
         observeState(viewModel.viewState) { state ->
             when (state) {
+                null -> Unit
                 is ProductViewState.Empty -> Unit
                 is ProductViewState.ProductList -> {
-                    adapter.addData(state.list)
+                    binding.clEmpty.gone()
+                    adapter.items = state.list
                 }
-                null -> Unit
+                is ProductViewState.ProductFilter -> {
+                    filterViewModel.setFilterCategory(state.filter.toFilterCategoryList())
+                }
+                is ProductViewState.ProductEmpty -> {
+                    binding.clEmpty.visible()
+                }
             }
         }
     }
