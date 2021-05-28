@@ -26,8 +26,6 @@ class FilterItemAdapter(private val vm: FilterViewModel) :
         notifyDataSetChanged()
     }
 
-    fun getItems() = items
-
     inner class FilterItemViewHolder(private val binding: RowItemFilterSelectedBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -47,34 +45,25 @@ class FilterItemAdapter(private val vm: FilterViewModel) :
             }
 
             binding.root.setOnClickListener {
-
-                /**
-                 * Ana kategori değil ise birden fazla seçebilir,
-                 * Ana kategori ise tek seçim yapabilir.
-                 */
-                /*if (item.isMainCategory.not()) {
-                    if (!selectedItemList.contains(item.id))
-                        selectedItemsId.add(item.id)
-                    else
-                        selectedItemsId.remove(item.id)
-                } else {
-                    selectedItemsId.clear()
-                    selectedItemsId.add(item.id)
-                    if (lastSelectedPos != -1) {
-                        items[lastSelectedPos].selected = false
-                    }
-                }*/
-                if (item.isMainCategory) {
-                    if (lastSelectedPos != -1) {
-                        items[lastSelectedPos].selected = false
-                    }
-                }
-                item.selected = item.selected.not()
-                lastSelectedPos = adapterPosition
-
-                notifyDataSetChanged()
-                vm.setFilter(item)
+                configureFilter(item)
             }
+        }
+
+        /**
+         * Ana kategori ise listeden tek seçim yapılır.
+         * @param lastSelectedPos
+         */
+        private fun configureFilter(item: FilterItem) {
+            if (item.isMainCategory) {
+                if (lastSelectedPos != -1) {
+                    items[lastSelectedPos].selected = false
+                }
+            }
+            item.selected = item.selected.not()
+            lastSelectedPos = adapterPosition
+
+            notifyDataSetChanged()
+            vm.setFilter(item)
         }
 
     }
@@ -90,6 +79,5 @@ class FilterItemAdapter(private val vm: FilterViewModel) :
     override fun getItemCount(): Int {
         return items.size
     }
-
 
 }

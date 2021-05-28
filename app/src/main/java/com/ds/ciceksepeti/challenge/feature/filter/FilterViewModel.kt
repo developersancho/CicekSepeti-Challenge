@@ -10,7 +10,6 @@ import com.ds.ciceksepeti.model.product.DynamicFilter
 
 class FilterViewModel : BaseViewModel<FilterViewState>() {
 
-    // todo: group field selectedDetailList(1), selectedCheckList(2), selectedPriceList(3) ArrayList<FilterItem>
     var selectedFilters = arrayListOf<SelectedFilterItem>()
     private var selectedFiltersId = arrayListOf<Int>()
     private var dynamicFilterList = listOf<FilterCategory>()
@@ -64,7 +63,8 @@ class FilterViewModel : BaseViewModel<FilterViewState>() {
     }
 
     /**
-     * filtreleme parametleri bir kez alınıyor...
+     * filtreleme parametreleri bir kez alınıyor.
+     * ürünler servisine bağımlılığı olduğu için
      */
     fun setFilterCategory(categoryList: List<FilterCategory>) {
         if (dynamicFilterList.isEmpty()) {

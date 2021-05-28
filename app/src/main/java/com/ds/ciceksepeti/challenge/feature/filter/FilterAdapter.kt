@@ -12,14 +12,14 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
 
     var onItemClicked: ((FilterCategory) -> Unit)? = null
 
-    var categoryItems: List<FilterCategory> = emptyList()
+    var filterCategoryItems: List<FilterCategory> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
     fun clearData() {
-        categoryItems.map { it.items.map { item -> item.selected = false } }
+        filterCategoryItems.map { it.items.map { item -> item.selected = false } }
         notifyDataSetChanged()
     }
 
@@ -44,6 +44,7 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
         private fun getSelectedItem(item: FilterCategory): String {
             val list = item.items.filter { it.selected }
             var names = ""
+
             if (list.size == 1)
                 return list.first().name.toString()
 
@@ -60,11 +61,11 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
-        holder.bind(categoryItems[position])
+        holder.bind(filterCategoryItems[position])
     }
 
     override fun getItemCount(): Int {
-        return categoryItems.size
+        return filterCategoryItems.size
     }
 
 }
