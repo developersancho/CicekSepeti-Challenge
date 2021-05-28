@@ -1,7 +1,7 @@
-# HepsiExpress-Challenge
-HepsiExpress-Challenge Mobile App
+# Çiçek Sepeti-Challenge
+Çiçek Sepeti-Challenge Mobile App
 
-A Github HepsiExpress ® Interview App illustrating current Android Architecture state using Android development best
+A Github Çiçek Sepeti ® Interview App illustrating current Android Architecture state using Android development best
 practices.
 
 Introduction
