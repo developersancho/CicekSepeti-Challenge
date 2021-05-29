@@ -7,7 +7,7 @@ object Versions {
     const val constraintLayout = "2.0.4"
     const val coreKtx = "1.5.0"
     const val material = "1.3.0"
-    const val coroutines = "1.4.3"
+    const val coroutines = "1.5.0"
     const val room = "2.3.0"
     const val moshi = "1.12.0"
     const val retrofit2 = "2.9.0"
